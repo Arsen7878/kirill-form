@@ -6,7 +6,7 @@
   "homepage": "https://github.com//kirill-form",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /web/kirill-form/"
+    "build": "parcel build src/*.html --public-url /kirill-form/"
   },
   "repository": {
     "type": "git",
