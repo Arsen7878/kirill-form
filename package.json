@@ -6,7 +6,7 @@
   "homepage": "https://github.com//kirill-form",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /kirill-form/"
+    "build": "parcel build src/*.html --public-url /web/kirill-form/"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "url": "https://github.com/Arsen7878/kirill-form/"
   },
   "devDependencies": {
+    "@types/fullcalendar": "^3.8.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
@@ -26,6 +27,11 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "fullcalendar": "^5.9.0",
+    "jquery": "^3.6.0",
+    "jquery-datetimepicker": "^2.5.21",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "Validator": "^1.1.4",
     "validatorjs": "^3.22.1"
   }
