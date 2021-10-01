@@ -17,6 +17,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
@@ -119,7 +127,7 @@
           </form>
         </div>
       </div>
-      <div id="catalog">
+      <div id="catalog" class="catalog">
         <div class="catalog__wrapper--main">
           <div class="catalog__wrapper--left">
             <ul class="catalog__list--left"></ul>
@@ -132,6 +140,50 @@
           <img src="./images/381599_error_icon.svg" alt="error" class="img__error" />
           <p class="error__text"></p>
           <button type="button" class="backdrop__button--close" data-modal-close>Закрыть</button>
+        </div>
+      </div>
+      <div class="datepicker__container">
+        <div class="calendar__datepicker">
+          <div class="month">
+            <i class="fas fa-angle-left prev"></i>
+            <div class="date">
+              <h1></h1>
+              <p></p>
+            </div>
+            <i class="fas fa-angle-right next"></i>
+          </div>
+          <div class="weekdays">
+            <div>Вс</div>
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+          </div>
+          <div class="days"></div>
+        </div>
+      </div>
+      <div class="time-pickable__container">
+        <div class="times">
+          <div class="time__container">09:00</div>
+          <div class="time__container">09:30</div>
+          <div class="time__container">10:00</div>
+          <div class="time__container">10:30</div>
+          <div class="time__container">11:00</div>
+          <div class="time__container">11:30</div>
+          <div class="time__container">12:00</div>
+          <div class="time__container">12:30</div>
+          <div class="time__container">13:00</div>
+          <div class="time__container">13:30</div>
+          <div class="time__container">14:00</div>
+          <div class="time__container">14:30</div>
+          <div class="time__container">15:00</div>
+          <div class="time__container">15:30</div>
+          <div class="time__container">16:00</div>
+          <div class="time__container">16:30</div>
+          <div class="time__container">17:00</div>
+          <div class="time__container">17:30</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 body {
   font-family: Roboto, sans-serif;
   line-height: 1.15;
+  background-color: #e9ecef;
 }
 ul {
   margin: 0;
@@ -9,6 +10,11 @@ ul {
 }
 
 p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
   margin: 0;
   padding: 0;
 }
@@ -42,17 +48,19 @@ p {
   padding-right: 30px;
   background-color: blue;
   color: white;
-  border-radius: 5px;
+  border-radius: 20px;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
 }
 
 .form__input {
   display: flex;
-  width: 100%;
+  width: 97%;
   height: 30px;
   border-radius: 5px;
   outline: none;
   border: none;
   margin-top: 5px;
+  padding-left: 10px;
 }
 
 .form__label {
@@ -85,7 +93,7 @@ p {
 
 .button:hover,
 .button:focus {
-  background-color: rgb(115, 115, 173);
+  background-color: #a7d1fd;
 }
 
 .button__first {
@@ -200,7 +208,7 @@ p {
   cursor: pointer;
   border-radius: 5px;
   margin-left: 20px;
-  background-color: rgb(115, 115, 173);
+  background-color: #a7d1fd;
 }
 
 .button__calendar:focus,
@@ -213,34 +221,33 @@ p {
   width: 300px;
 }
 
-/* !==================================Стили для ПРАЙСА */
+.catalog {
+  background-color: white;
+  border-radius: 12px;
+}
+
 .catalog__wrapper--main {
   width: 1200px;
-  max-height: 2000px;
   display: flex;
-  justify-content: center;
   margin-top: 50px;
-  padding-bottom: 100px;
-}
-
-.catalog__wrapper--left {
-  flex-basis: 50%;
-}
-
-.catalog__wrapper--right {
-  flex-basis: 50%;
 }
 
 .catalog__item--left {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: grey;
   border-radius: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: white;
+  transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.catalog__item--left:hover,
+.catalog__item--left:focus {
+  background-color: #a7d1fd;
 }
 
 .catalog__item--left:not(:first-child) {
@@ -251,25 +258,38 @@ p {
   margin-right: 10px;
 }
 
+.catalog__wrapper--left {
+  width: 30%;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  -webkit-box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
+}
+
 .catalog__wrapper--right {
-  margin-left: 30px;
-  flex-basis: 50%;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  -webkit-box-shadow: 13px 3px 17px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: 13px 3px 17px 5px rgba(0, 0, 0, 0.32);
 }
 
 .catalog__item--right {
   display: flex;
   align-items: center;
   border-radius: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  border: 3px solid black;
   cursor: pointer;
+  background-color: white;
+  transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .catalog__item--right:hover,
 .catalog__item--right:focus {
-  color: blue;
+  background-color: #a7d1fd;
 }
 
 .catalog__item--right:not(:first-child) {
@@ -280,22 +300,35 @@ p {
   min-width: 60px;
   margin-left: auto;
   padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .catalog__text--right {
   margin-right: 20px;
   margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+.conter-service {
+  margin-left: auto;
+  color: blue;
+  font-size: 16px;
+}
+
 .hidden {
   display: none;
 }
-/* !=================================== КОНЕЦ СТИЛЕЙ ПРАЙСА */
 
-/* !=================================Кастомный чекбокс */
 .custom-checkbox {
   position: absolute;
   z-index: -1;
   opacity: 0;
+}
+
+.label__checkbox {
+  padding-left: 5px;
 }
 
 .custom-checkbox + label {
@@ -345,9 +378,7 @@ p {
 .custom-checkbox:disabled + label::before {
   background-color: #e9ecef;
 }
-/* !================================Конец стилей кастомного чекбокса */
 
-/* !======================================СТИЛИ БЭКДРОПА ОШИБКИ */
 .backdrop {
   position: fixed;
   top: 0;
@@ -401,4 +432,126 @@ p {
   margin-bottom: 20px;
 }
 
-/* !========================================КОНЕЦ СТИЛЕЙ БЭКДРОПА ОШИБКИ */
+.datepicker__container {
+  width: 100%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar__datepicker {
+  width: 45rem;
+  height: 52rem;
+  background-color: white;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+
+.month {
+  height: 12rem;
+  background-color: #a7d1fd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.month i {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.month h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.month p {
+  font-size: 1.6rem;
+}
+
+.weekdays {
+  width: 100%;
+  height: 5rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.weekdays div {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: calc(44.2rem / 7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+}
+
+.days div {
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  width: calc(40.2rem / 7);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 200ms;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.days div:hover:not(.today) {
+  background-color: #a7d1fd;
+  cursor: pointer;
+}
+
+.today {
+  background-color: #a7d1fd;
+}
+
+.time-pickable__container {
+  display: flex;
+  justify-content: center;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.time__container {
+  display: flex;
+  justify-content: center;
+  width: calc(100% / 4);
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  height: 5rem;
+  align-items: center;
+  transition: background-color 200ms, box-shadow 200ms;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.time__container:hover,
+.time__container:focus {
+  background-color: #a7d1fd;
+  -webkit-box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
+}
