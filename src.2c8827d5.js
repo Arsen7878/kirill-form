@@ -25,4 +25,4 @@ const e=document.querySelector('[data-action="button-next2"]'),t=document.queryS
 },{}],"Focm":[function(require,module,exports) {
 "use strict";var e=j(require("./js/validator")),r=j(require("./js/form")),u=j(require("./js/buttons-back")),i=j(require("./js/calendar")),s=j(require("./js/feach-price")),t=j(require("./js/file-load")),a=j(require("./js/button-next2"));function j(e){return e&&e.__esModule?e:{default:e}}
 },{"./js/validator":"rxrH","./js/form":"oVPx","./js/buttons-back":"YgTJ","./js/calendar":"qLPT","./js/feach-price":"yp0a","./js/file-load":"JpfU","./js/button-next2":"gTtc"}]},{},["Focm"], null)
-//# sourceMappingURL=../dist/src.2c8827d5.js.map
+//# sourceMappingURL=kirill-form/src.2c8827d5.js.map
