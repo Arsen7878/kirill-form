@@ -1,7 +1,7 @@
 const inputTel = document.querySelector('input[type="tel"]');
 const inputName = document.querySelector('[data-action="input-name"]');
 const btnNext1 = document.querySelector('[data-action="button-next1"]');
-const backdropRef = document.querySelector('[data-modal]');
+export const backdropRef = document.querySelector('[data-modal]');
 const btnCloseBackdrop = document.querySelector('[data-modal-close]');
 const errorText = document.querySelector('.error__text');
 
@@ -35,7 +35,7 @@ function checkValue(value1, value2) {
   }
 }
 
-function outputError(message) {
+export function outputError(message) {
   backdropRef.classList.remove('backdrop--is-hidden');
   errorText.textContent = message;
 }

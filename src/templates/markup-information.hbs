@@ -1,0 +1,49 @@
+{{#each this}}
+  <label class='information__label'>Марка
+    <input
+      type='text'
+      class='form__input'
+      name='brand-inf'
+      data-action='input-brand'
+      value='{{brand}}'
+      readonly
+    /></label>
+
+  <label class='information__label'>модель
+    <input
+      type='text'
+      class='form__input'
+      name='model-inf'
+      data-action='input-catalog'
+      value='{{catalog}}'
+      readonly
+    /></label>
+  <label class='information__label'>Год выпуска
+    <input
+      type='text'
+      class='form__input'
+      name='date-inf'
+      data-action='input-date'
+      value='{{date}}'
+      readonly
+    /></label>
+  <label class='information__label'>двигатель
+    <input
+      type='text'
+      class='form__input'
+      name='engine-inf'
+      data-action='input-engine'
+      value='{{engine}}'
+      readonly
+    /></label>
+  <label class='information__label'>трансмиссия
+    <input
+      type='text'
+      class='form__input'
+      name='transmission-inf'
+      data-action='input-transmission'
+      value='{{transmission}}'
+      readonly
+    /></label>
+
+{{/each}}

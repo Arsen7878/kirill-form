@@ -23,10 +23,13 @@ h1 {
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .title {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .text {
@@ -68,8 +71,15 @@ h1 {
   width: 100%;
 }
 
+.information__label {
+  display: block;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
 .form__text {
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .form__label:not(:first-child) {
@@ -100,8 +110,12 @@ h1 {
   margin-top: 50px;
 }
 
-.btn__img {
+.btn__img--left {
   margin-right: 5px;
+}
+
+.btn__img--left {
+  margin-left: 5px;
 }
 
 .form-options {
@@ -122,6 +136,16 @@ h1 {
 
 .wrapper {
   position: relative;
+  transform: translateX(0);
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wrapper.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transform: translateX(1500px);
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .wrapper__label {
@@ -134,54 +158,50 @@ h1 {
   margin-top: 20px;
 }
 
-.example-2 .btn-tertiary {
-  width: 100%;
-  color: black;
-  padding: 0;
-  line-height: 28px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  border: 3px solid white;
-  border-radius: 7px;
-  background-color: white;
-}
-.attach {
-  display: block;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.example-2 .btn-tertiary:hover,
-.example-2 .btn-tertiary:focus {
-  color: blue;
-  border-color: white;
-}
-.example-2 .input-file {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
+.fileUpload {
+  position: relative;
+  top: 5px;
   overflow: hidden;
+}
+.fileUpload input.upload {
   position: absolute;
-  z-index: -1;
-}
-.example-2 .input-file + .js-labelFile {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
   cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
-.example-2 .input-file + .js-labelFile .icon:before {
-  content: '\f093';
+
+.btn--browse {
+  background-color: white;
+  color: black;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.example-2 .input-file + .js-labelFile.has-file .icon:before {
-  content: '\f00c';
-  color: #5aac7b;
+
+.f-input {
+  height: 40px;
+  background-color: white;
+  float: left;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 0;
+  width: 99%;
+  padding-left: 5px;
 }
 
 .form2 {
   position: absolute;
   right: -1500px;
-  top: 0;
+  top: 134px;
   opacity: 0;
   transition: opacity 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -221,15 +241,54 @@ h1 {
   width: 300px;
 }
 
+.btn-wrapper__catalog {
+  display: flex;
+}
+
+.btn__catalog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 150px;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: white;
+  transition: background-color 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 1), -23px 0 20px -23px rgba(0, 0, 0, 0.8),
+    23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.btn__catalog:hover,
+.btn__catalog:focus {
+  background-color: #a7d1fd;
+}
+
+.catalog.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transform: translateX(1500px);
+}
+
 .catalog {
+  position: absolute;
+  opacity: 1;
+  top: 100px;
+  transform: translateX(0);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
   background-color: white;
   border-radius: 12px;
+  padding-bottom: 50px;
 }
 
 .catalog__wrapper--main {
   width: 1200px;
   display: flex;
-  margin-top: 50px;
 }
 
 .catalog__item--left {
@@ -390,12 +449,14 @@ h1 {
   /* Анимация бекдропа */
   background-color: rgba(0, 0, 0, 0.3);
   overflow-y: scroll;
+  transition: opacity 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .backdrop--is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: visible;
+  transition: opacity 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .backdrop__box {
@@ -432,23 +493,37 @@ h1 {
   margin-bottom: 20px;
 }
 
+.datepicker__container.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transform: translateX(1500px);
+}
+
 .datepicker__container {
+  position: absolute;
+  opacity: 1;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
   width: 100%;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
 }
 
 .calendar__datepicker {
-  width: 45rem;
-  height: 52rem;
+  width: 30rem;
+  height: 45rem;
   background-color: white;
   box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
 }
 
 .month {
-  height: 12rem;
+  height: 8rem;
   background-color: #a7d1fd;
   display: flex;
   justify-content: space-between;
@@ -458,12 +533,12 @@ h1 {
 }
 
 .month i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   cursor: pointer;
 }
 
 .month h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
@@ -471,12 +546,12 @@ h1 {
 }
 
 .month p {
-  font-size: 1.6rem;
+  font-size: 1rem;
 }
 
 .weekdays {
   width: 100%;
-  height: 5rem;
+  height: 2rem;
   padding: 0 0.4rem;
   display: flex;
   align-items: center;
@@ -486,7 +561,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  width: calc(44.2rem / 7);
+  width: calc(29.3rem / 7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -502,7 +577,7 @@ h1 {
 .days div {
   font-size: 1.4rem;
   margin: 0.3rem;
-  width: calc(40.2rem / 7);
+  width: calc(25.5rem / 7);
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -524,9 +599,26 @@ h1 {
   background-color: #a7d1fd;
 }
 
+.time-pickable__container.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transform: translateX(1500px);
+}
+
 .time-pickable__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  width: 30rem;
+  position: absolute;
+  opacity: 1;
+  top: 120%;
+  left: 50%;
+  padding-bottom: 50px;
+  transform: translate(-50%, -50%);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  border-top: 2px solid black;
+  padding-top: 50px;
 }
 
 .times {
@@ -542,7 +634,7 @@ h1 {
   width: calc(100% / 4);
   font-size: 1.4rem;
   margin: 0.3rem;
-  height: 5rem;
+  height: 50px;
   align-items: center;
   transition: background-color 200ms, box-shadow 200ms;
   background-color: white;
