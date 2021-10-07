@@ -1,12 +1,11 @@
 import { validForm, validNumber, outputError, backdropRef } from './validator';
 import markupInformation from '../templates/markup-information.hbs';
+import infVin from '../templates/inf-vin.hbs';
 
-const form2 = document.querySelector('#form2');
+export const form2 = document.querySelector('#form2');
 const btnNext1 = document.querySelector('[data-action="button-next1"]');
-const selectForm = document.querySelector('.form__list');
-const vinRef = document.querySelector('#vin');
+export const selectForm = document.querySelector('.form__list');
 const markaRef = document.querySelector('#marka');
-const fileLoadRef = document.querySelector('#file-load');
 const inputList = document.querySelectorAll('[data-value]');
 const modelRef = document.querySelector('#model');
 const inputVin = document.querySelector('[data-action="input-vin"]');
@@ -21,12 +20,14 @@ btnNext1.addEventListener('click', event => {
 });
 
 selectForm.addEventListener('change', event => {
-  modelRef.classList.remove('is-open__label');
   event.preventDefault();
+  modelRef.classList.remove('is-open__label');
   inputList.forEach(el => {
     el.classList.remove('is-open__label');
   });
-  inputList[Number(event.target.value) - 1].classList.toggle('is-open__label');
+  if (event.target.value !== '0') {
+    inputList[Number(event.target.value) - 1].classList.toggle('is-open__label');
+  }
   informationVinRef.innerHTML = '';
   inputVin.value = '';
   inputGos.value = '';
@@ -38,11 +39,12 @@ markaRef.addEventListener('click', event => {
 });
 
 inputVin.addEventListener('change', event => {
+  event.preventDefault();
   removeInput(inputVin, informationVinRef, 17);
 
   if (event.target.value.length < 17) {
     backdropRef.classList.remove('backdrop--is-hidden');
-    const messageError = 'Некорректно введён vin-код автомбиля';
+    const messageError = 'Некоректно введено vin-код автомбіля';
     outputError(messageError);
   } else {
     getPostVin(event.target.value);
@@ -56,11 +58,12 @@ function removeInput(selector, removeEl, numberLength) {
 }
 
 inputGos.addEventListener('change', event => {
+  event.preventDefault();
   removeInput(inputGos, informationVinRef, 8);
 
   if (event.target.value.length < 8) {
     backdropRef.classList.remove('backdrop--is-hidden');
-    const messageError = 'Некорректно введён регистрационный номер автомбиля';
+    const messageError = 'Некоректно введено реєстраційний номер автомбіля';
     outputError(messageError);
   } else {
     getPostGos(event.target.value);
@@ -69,7 +72,7 @@ inputGos.addEventListener('change', event => {
 
 function findError(dataVin) {
   if (dataVin === '') {
-    const messageError = 'Регистрационный номер не найден!';
+    const messageError = 'Реєстраційний номер не знайдено!';
     outputError(messageError);
   }
 }
@@ -112,19 +115,27 @@ function getPostVin(vin) {
   request.setRequestHeader('Token', 'sAnWaCmRqtrdEySnoXA6l5tFpP7qmETl');
 
   request.onload = function () {
-    informationForVin(request.response.data);
+    informationForVin(request.response.data, vin);
   };
 
   request.send(body);
 }
 
-function informationForVin(data) {
+function informationForVin(data, dataVin) {
   informationVinRef.innerHTML = '';
   const createInformation = createMarkup(data);
+  const createVin = createMarkupVin(dataVin);
   function createMarkup(data) {
     return markupInformation(data);
   }
+  function createMarkupVin(dataVin) {
+    return infVin({ dataVin });
+  }
   if (informationVinRef.childElementCount < 1) {
+    if (inputGos.value !== '') {
+      informationVinRef.insertAdjacentHTML('beforeend', createVin);
+    }
+
     informationVinRef.insertAdjacentHTML('beforeend', createInformation);
   }
 

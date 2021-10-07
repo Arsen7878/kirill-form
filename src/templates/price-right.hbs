@@ -2,13 +2,12 @@
   <ul class='catalog__list--right hidden' data-value='{{groupNumber}}'>
     {{#each child}}
       <li class='catalog__item--right'>
-        <input
-          type='checkbox'
-          class='custom-checkbox'
-          id='{{name}}{{value}}{{groupNumber}}'
-          data-checked='false'
-        />
-        <label for='{{name}}{{value}}{{groupNumber}}' class='label__checkbox'></label>
+        <input type='checkbox' class='custom-checkbox' id='{{name}}{{value}}{{groupNumber}}' />
+        <label
+          for='{{name}}{{value}}{{groupNumber}}'
+          class='label__checkbox'
+          data-price='{{price}}'
+        ></label>
         <p class='catalog__text--right'>{{name}}</p>
         <span class='catalog__price--right'>~ {{price}} ₴</span>
 

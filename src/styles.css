@@ -14,7 +14,8 @@ p {
   padding: 0;
 }
 
-h1 {
+h1,
+h2 {
   margin: 0;
   padding: 0;
 }
@@ -114,7 +115,7 @@ h1 {
   margin-right: 5px;
 }
 
-.btn__img--left {
+.btn__img--right {
   margin-left: 5px;
 }
 
@@ -122,12 +123,17 @@ h1 {
   width: 100%;
 }
 
-.form__list {
+.form__list,
+.change-address {
   width: 100%;
   height: 30px;
   border-radius: 5px;
   border: none;
   outline: none;
+}
+
+.change-address {
+  margin-bottom: 10px;
 }
 
 .button__back {
@@ -144,7 +150,7 @@ h1 {
   opacity: 0;
   pointer-events: none;
   visibility: visible;
-  transform: translateX(1500px);
+  transform: translateX(-300%);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -200,17 +206,22 @@ h1 {
 
 .form2 {
   position: absolute;
-  right: -1500px;
-  top: 134px;
   opacity: 0;
-  transition: opacity 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateX(-300%);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .form2.is-open {
+  position: absolute;
+  top: 134px;
   opacity: 1;
   pointer-events: initial;
-  transform: translateX(-1870px);
+  transform: translateX(369px);
   transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.form__list.change-address {
+  margin-bottom: 10px;
 }
 
 .calendar__box {
@@ -243,6 +254,14 @@ h1 {
 
 .btn-wrapper__catalog {
   display: flex;
+  margin-top: 40px;
+  justify-content: space-around;
+}
+.btn-wrapper__catalog--top {
+  display: flex;
+  justify-content: space-around;
+
+  margin-bottom: 40px;
 }
 
 .btn__catalog {
@@ -252,9 +271,6 @@ h1 {
   cursor: pointer;
   width: 150px;
   height: 35px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
   border: none;
   border-radius: 15px;
   background-color: white;
@@ -268,11 +284,16 @@ h1 {
   background-color: #a7d1fd;
 }
 
+.btn__catalog:not(:last-child) {
+  margin-right: 60px;
+}
+
 .catalog.is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: visible;
-  transform: translateX(1500px);
+  transform: translateX(-300%);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .catalog {
@@ -301,7 +322,7 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
-  transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .catalog__item--left:hover,
@@ -438,7 +459,8 @@ h1 {
   background-color: #e9ecef;
 }
 
-.backdrop {
+.backdrop,
+.backdrop__done {
   position: fixed;
   top: 0;
   left: 0;
@@ -452,14 +474,16 @@ h1 {
   transition: opacity 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.backdrop--is-hidden {
+.backdrop--is-hidden,
+.backdrop--is-hidden__done {
   opacity: 0;
   pointer-events: none;
   visibility: visible;
   transition: opacity 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.backdrop__box {
+.backdrop__box,
+.backdrop__box-done {
   position: absolute;
   top: 20%;
   left: 50%;
@@ -486,37 +510,53 @@ h1 {
   cursor: pointer;
 }
 
-.img__error {
+.img__error,
+.img__done {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  width: 40px;
+  height: 40px;
 }
 
-.datepicker__container.is-hidden {
+.date-time__container {
+  position: absolute;
+  display: flex;
+  top: 100px;
+  transform: translate(0);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.title__date-time {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 5px 0;
+  font-size: 24px;
+  background-color: white;
+  text-align: center;
+}
+
+.date-time__container.is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: visible;
-  transform: translateX(1500px);
+  transform: translateX(-300%);
+  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .datepicker__container {
-  position: absolute;
-  opacity: 1;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  width: 100%;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  flex-direction: column;
+  margin-right: 50px;
+  padding-left: 50px;
 }
 
 .calendar__datepicker {
-  width: 30rem;
+  width: 33rem;
   height: 45rem;
   background-color: white;
   box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
@@ -552,7 +592,10 @@ h1 {
 .weekdays {
   width: 100%;
   height: 2rem;
-  padding: 0 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 10px;
+
   display: flex;
   align-items: center;
 }
@@ -561,7 +604,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  width: calc(29.3rem / 7);
+  width: calc(32rem / 7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,7 +620,7 @@ h1 {
 .days div {
   font-size: 1.4rem;
   margin: 0.3rem;
-  width: calc(25.5rem / 7);
+  width: calc(28rem / 7);
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -596,29 +639,22 @@ h1 {
 }
 
 .today {
+  background-color: #e9eff7;
+}
+
+.current__day {
   background-color: #a7d1fd;
 }
 
-.time-pickable__container.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: visible;
-  transform: translateX(1500px);
+.time__container.current__time {
+  background-color: #a7d1fd;
 }
 
 .time-pickable__container {
   display: flex;
   flex-direction: column;
-  width: 30rem;
-  position: absolute;
-  opacity: 1;
-  top: 120%;
-  left: 50%;
-  padding-bottom: 50px;
-  transform: translate(-50%, -50%);
-  transition: transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  border-top: 2px solid black;
-  padding-top: 50px;
+  align-items: center;
+  max-width: 33rem;
 }
 
 .times {
@@ -647,3 +683,51 @@ h1 {
   -webkit-box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
   box-shadow: -1px 1px 17px 5px rgba(0, 0, 0, 0.32);
 }
+
+/* Стили для верхней части каталога */
+.wrapper__price--top {
+  margin-bottom: 30px;
+  padding-left: 30px;
+  font-size: 20px;
+  -webkit-box-shadow: 13px 3px 17px 5px rgba(0, 0, 0, 0.32);
+  box-shadow: 13px 3px 17px 5px rgba(0, 0, 0, 0.32);
+}
+
+.title__price--top {
+  display: inline-block;
+  font-size: 30px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+.wrapper__price--text {
+  display: flex;
+  padding-bottom: 15px;
+}
+.counter__price--top {
+  margin-left: 20px;
+}
+
+.wrapper__price--text:not(:first-child) {
+  margin-top: 5px;
+}
+
+.buttom__price--top {
+  margin-bottom: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 22px;
+  color: white;
+  background-color: blue;
+  transition: background 300ms cubic-bezier(0.19, 1, 0.22, 1),
+    color 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.buttom__price--top:focus,
+.buttom__price--top:hover {
+  color: black;
+  background-color: #a7d1fd;
+}
+/* Конец стилей для верхней части каталога */

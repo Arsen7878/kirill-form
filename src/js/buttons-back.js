@@ -1,27 +1,26 @@
+import { addRemoveClassIsHidden, catalog, wrapperForm, dateTimeContainer } from './button-next2';
+import { form2 } from './form';
+
 const btnBack = document.querySelector('[data-action="button__back"]');
 const btnBackCatalog = document.querySelector('[data-back__catalog]');
+const btnBackCatalogTop = document.querySelector('[data-back__catalog--top]');
 const btnBackTime = document.querySelector('[data-back__date-time]');
-const timePicker = document.querySelector('.time-pickable__container');
-const datePicker = document.querySelector('.datepicker__container ');
-const wrapperForm = document.querySelector('.wrapper');
-const catalog = document.querySelector('#catalog');
+
+function isClickBtnBackAndBtnBackCatalog(event) {
+  event.preventDefault();
+  addRemoveClassIsHidden(catalog, wrapperForm, 'is-hidden');
+}
 
 btnBack.addEventListener('click', event => {
   event.preventDefault();
   form2.classList.remove('is-open');
 });
 
-btnBackCatalog.addEventListener('click', event => {
-  event.preventDefault();
+btnBackCatalog.addEventListener('click', isClickBtnBackAndBtnBackCatalog);
 
-  catalog.classList.add('is-hidden');
-  wrapperForm.classList.remove('is-hidden');
-});
+btnBackCatalogTop.addEventListener('click', isClickBtnBackAndBtnBackCatalog);
 
 btnBackTime.addEventListener('click', event => {
   event.preventDefault();
-
-  timePicker.classList.add('is-hidden');
-  datePicker.classList.add('is-hidden');
-  catalog.classList.remove('is-hidden');
+  addRemoveClassIsHidden(dateTimeContainer, catalog, 'is-hidden');
 });

@@ -2,8 +2,7 @@ const inputTel = document.querySelector('input[type="tel"]');
 const inputName = document.querySelector('[data-action="input-name"]');
 const btnNext1 = document.querySelector('[data-action="button-next1"]');
 export const backdropRef = document.querySelector('[data-modal]');
-const btnCloseBackdrop = document.querySelector('[data-modal-close]');
-const errorText = document.querySelector('.error__text');
+export const errorText = document.querySelector('.error__text');
 
 export let validNumber = false;
 export let validForm = false;
@@ -16,37 +15,31 @@ function checkNumber(AStr) {
 function showCheck(AStr) {
   validNumber = false;
   if (!checkNumber(AStr)) {
-    let messageError = 'Некорректно введён номер телефона!';
-    outputError(messageError);
+    let messageError = 'Некоректно введено номер телефону!';
+    outputError(messageError, backdropRef, errorText);
   } else {
     validNumber = true;
   }
 }
 
-function checkValue(value1, value2) {
+function checkValue(value1) {
   validForm = false;
 
   if (value1 === '') {
-    let messageError = 'Заполните поле "Имя"!';
+    let messageError = 'Заповніть поле "Ім′я" !';
 
-    outputError(messageError);
+    outputError(messageError, backdropRef, errorText);
   } else {
     validForm = true;
   }
 }
 
-export function outputError(message) {
-  backdropRef.classList.remove('backdrop--is-hidden');
-  errorText.textContent = message;
+export function outputError(message, element1, element2) {
+  element1.classList.remove('backdrop--is-hidden');
+  element2.textContent = message;
 }
 
 btnNext1.addEventListener('click', event => {
   checkValue(inputName.value);
   showCheck(inputTel.value);
 });
-
-btnCloseBackdrop.addEventListener('click', onCloseBackdrop);
-
-function onCloseBackdrop(event) {
-  backdropRef.classList.add('backdrop--is-hidden');
-}

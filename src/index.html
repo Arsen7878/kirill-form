@@ -29,12 +29,12 @@
   <body>
     <div class="container">
       <div class="wrapper">
-        <h1 class="title">Запись на СТО</h1>
-        <p class="text">Для записи на ремонт заполните, пожалуйста, форму:</p>
+        <h1 class="title">Запис на СТО</h1>
+        <p class="text">Для запису на ремонт заповніть, будь-ласка, форму:</p>
         <div class="wrapper__form">
-          <form class="form" id="form1" method="post" action="">
+          <form class="form" id="form1" method="post" action="" name="date_form1">
             <label class="form__label"
-              >Имя:<input
+              >Ім'я:<input
                 type="text"
                 class="form__input"
                 name="name"
@@ -42,7 +42,7 @@
                 enctype="multipart/form-data"
             /></label>
             <label class="form__label"
-              >Номер телефона (вайбер):<input
+              >Номер телефону (вайбер):<input
                 type="tel"
                 class="form__input"
                 name="tel"
@@ -50,8 +50,8 @@
                 maxlength="13"
                 enctype="multipart/form-data"
             /></label>
-            <button class="button button__first" type="button" data-action="button-next1">
-              Далее
+            <button class="button button__first" type="submit" data-action="button-next1">
+              Далі
               <img
                 class="btn__img--right"
                 src="./images/rightarrow_120622.svg"
@@ -61,24 +61,55 @@
               />
             </button>
           </form>
-          <form class="form form2" id="form2" method="POST">
-            <p class="form__text">Информация по автомобилю:</p>
+          <form class="form form2" id="form2" method="post" action="" name="date_form2">
+            <p class="form__text">Виберіть адресу:</p>
+            <select id="change-address" name="change-address" class="change-address" required>
+              <option class="form__list--item" value="0"></option>
+              <option class="form__list--item" value="1">
+                вулиця Новокостянтинівська, 4А, Подол, Київ
+              </option>
+              <option class="form__list--item" value="2">
+                вулиця Гната Хоткевича, 34, Лівий Берег, Київ
+              </option>
+              <option class="form__list--item" value="3">
+                вулиця Малинська, 1, Святошинський р-н, Новобіличі, Київ
+              </option>
+              <option class="form__list--item" value="4">
+                Грузовий - вулиця Київська , 4, Хмельницький, Хмельницька область
+              </option>
+            </select>
+            <p class="form__text">Інформація по автомобілю:</p>
             <div class="form-options">
-              <select class="form__list" required size="0">
+              <select
+                class="form__list"
+                name="type-information"
+                required
+                size="0"
+                autofocus
+                data-select-input-date
+              >
                 <option class="form__list--item" value="0"></option>
-                <option class="form__list--item" value="1">Напишу VIN-код автомобиля</option>
-                <option class="form__list--item" value="2">
-                  Прикреплю фото технического паспорта
+                <option class="form__list--item" value="1">
+                  Напишу державний реєстраційний номер
                 </option>
+                <option class="form__list--item" value="2">Напишу VIN-код автомобіля</option>
                 <option class="form__list--item" value="3">
-                  Напишу вручную параметры автомобиля
+                  Прикріплю фото техніческого паспорта
                 </option>
-                <option class="form__list--item" value="4">Напишу гос номер автомобиля</option>
+                <option class="form__list--item" value="4">
+                  Напишу вручну параметри автомобиія
+                </option>
               </select>
             </div>
-            <div class="wrapper__label" id="vin" data-value="0">
+            <div class="wrapper__label" id="gos" data-value="0">
               <label class="form__label"
-                >vin-код авто (пример: 4USBT53544LT26841)
+                >державний номер номер:
+                <input type="text" class="form__input" name="gos" data-action="input-gos"
+              /></label>
+            </div>
+            <div class="wrapper__label" id="vin" data-value="1">
+              <label class="form__label"
+                >vin-код автомобіля (приклад: 4USBT53544LT26841)
                 <input
                   type="text"
                   class="form__input"
@@ -88,25 +119,20 @@
                   enctype="multipart/form-data"
               /></label>
             </div>
-            <div class="wrapper__label" id="file-load" data-value="1">
+            <div class="wrapper__label" id="file-load" data-value="2">
               <input id="uploadFile" class="f-input" />
               <div class="fileUpload btn btn--browse">
-                <span>Обзор</span>
+                <span>Огляд</span>
                 <input id="uploadBtn" type="file" class="upload" />
               </div>
             </div>
-            <div class="wrapper__label" id="marka" data-value="2">
+            <div class="wrapper__label" id="marka" data-value="3">
               <label class="form__label"
-                >марка автомобиля (пример: тойота)
+                >марка автомобіля (приклад: тойота)
                 <input type="text" class="form__input" name="marka" data-action="input-marka"
               /></label>
             </div>
-            <div class="wrapper__label" id="gos" data-value="3">
-              <label class="form__label"
-                >гос номер:
-                <input type="text" class="form__input" name="gos" data-action="input-gos"
-              /></label>
-            </div>
+
             <div class="wrapper__label" id="model">
               <label class="form__label"
                 >модель:
@@ -116,7 +142,7 @@
             <div class="wrapper__label" id="information-vin"></div>
             <div class="wrapper__label" id="information-gos"></div>
             <button class="button button__first" type="button" data-action="button-next2">
-              Далее
+              Далі
               <img
                 class="btn__img--right"
                 src="./images/rightarrow_120622.svg"
@@ -139,6 +165,45 @@
         </div>
       </div>
       <div id="catalog" class="catalog is-hidden">
+        <div class="wrapper__price--top">
+          <h2 class="title__price--top">Выберіть послугу</h2>
+          <div class="wrapper__price--text">
+            <p class="text__price--top">Всьго выбрано послуг:</p>
+            <span class="counter__price--top" data-counter__service>0</span>
+          </div>
+          <div class="wrapper__price--text">
+            <p class="text__price--top">Приблизна вартість:</p>
+            <span class="counter__price--top" data-counter__sum>0 ₴</span>
+          </div>
+
+          <div>
+            <button type="button" class="buttom__price--top" data-button-clean>
+              Очистити замовлення
+            </button>
+          </div>
+        </div>
+        <div class="btn-wrapper__catalog--top">
+          <button type="button" class="btn__catalog" data-back__catalog--top>
+            <img
+              class="btn__img--left"
+              src="./images/leftarrow1_120649.svg"
+              alt="arrow"
+              width="30"
+              height="20"
+            />Назад
+          </button>
+          <button type="button" class="btn__catalog" data-skip>Пропустити крок</button>
+          <button type="button" class="btn__catalog" data-next__catalog--top>
+            Далі
+            <img
+              class="btn__img--right"
+              src="./images/rightarrow_120622.svg"
+              alt="arrow"
+              width="30"
+              height="20"
+            />
+          </button>
+        </div>
         <div class="catalog__wrapper--main">
           <div class="catalog__wrapper--left">
             <ul class="catalog__list--left"></ul>
@@ -155,8 +220,9 @@
               height="20"
             />Назад
           </button>
+          <button type="button" class="btn__catalog" data-skip>Пропустити крок</button>
           <button type="button" class="btn__catalog" data-next__catalog>
-            Далее
+            Далі
             <img
               class="btn__img--right"
               src="./images/rightarrow_120622.svg"
@@ -167,77 +233,82 @@
           </button>
         </div>
       </div>
-
-      <div class="datepicker__container is-hidden">
-        <div class="calendar__datepicker">
-          <div class="month">
-            <i class="fas fa-angle-left prev"></i>
-            <div class="date">
-              <h1></h1>
-              <p></p>
+      <div class="date-time__container is-hidden">
+        <div class="datepicker__container">
+          <h2 class="title__date-time">Оберіть дату:</h2>
+          <div class="calendar__datepicker">
+            <div class="month">
+              <i class="fas fa-angle-left prev"></i>
+              <div class="date">
+                <h1 class="current__month"></h1>
+                <p></p>
+              </div>
+              <i class="fas fa-angle-right next"></i>
             </div>
-            <i class="fas fa-angle-right next"></i>
+            <div class="weekdays">
+              <div>Нд</div>
+              <div>Пн</div>
+              <div>Вт</div>
+              <div>Ср</div>
+              <div>Чт</div>
+              <div>Пт</div>
+              <div>Сб</div>
+            </div>
+            <div class="days"></div>
           </div>
-          <div class="weekdays">
-            <div>Вс</div>
-            <div>Пн</div>
-            <div>Вт</div>
-            <div>Ср</div>
-            <div>Чт</div>
-            <div>Пт</div>
-            <div>Сб</div>
+        </div>
+        <div class="time-pickable__container">
+          <h2 class="title__date-time">Оберіть час:</h2>
+          <div class="times">
+            <div class="time__container">09:00</div>
+            <div class="time__container">09:30</div>
+            <div class="time__container">10:00</div>
+            <div class="time__container">10:30</div>
+            <div class="time__container">11:00</div>
+            <div class="time__container">11:30</div>
+            <div class="time__container">12:00</div>
+            <div class="time__container">12:30</div>
+            <div class="time__container">13:00</div>
+            <div class="time__container">13:30</div>
+            <div class="time__container">14:00</div>
+            <div class="time__container">14:30</div>
+            <div class="time__container">15:00</div>
+            <div class="time__container">15:30</div>
+            <div class="time__container">16:00</div>
+            <div class="time__container">16:30</div>
+            <div class="time__container">17:00</div>
+            <div class="time__container">17:30</div>
           </div>
-          <div class="days"></div>
-        </div>
-      </div>
-      <div class="time-pickable__container is-hidden">
-        <div class="times">
-          <div class="time__container">09:00</div>
-          <div class="time__container">09:30</div>
-          <div class="time__container">10:00</div>
-          <div class="time__container">10:30</div>
-          <div class="time__container">11:00</div>
-          <div class="time__container">11:30</div>
-          <div class="time__container">12:00</div>
-          <div class="time__container">12:30</div>
-          <div class="time__container">13:00</div>
-          <div class="time__container">13:30</div>
-          <div class="time__container">14:00</div>
-          <div class="time__container">14:30</div>
-          <div class="time__container">15:00</div>
-          <div class="time__container">15:30</div>
-          <div class="time__container">16:00</div>
-          <div class="time__container">16:30</div>
-          <div class="time__container">17:00</div>
-          <div class="time__container">17:30</div>
-        </div>
-        <div class="btn-wrapper__catalog">
-          <button type="button" class="btn__catalog" data-back__date-time>
-            <img
-              class="btn__img--left"
-              src="./images/leftarrow1_120649.svg"
-              alt="arrow"
-              width="30"
-              height="20"
-            />Назад
-          </button>
-          <button type="button" class="btn__catalog" data-next__date-time>
-            Далее
-            <img
-              class="btn__img--right"
-              src="./images/rightarrow_120622.svg"
-              alt="arrow"
-              width="30"
-              height="20"
-            />
-          </button>
+          <div class="btn-wrapper__catalog">
+            <button type="button" class="btn__catalog" data-back__date-time>
+              <img
+                class="btn__img--left"
+                src="./images/leftarrow1_120649.svg"
+                alt="arrow"
+                width="30"
+                height="20"
+              />Назад
+            </button>
+            <button type="submit" class="btn__catalog" data-submit>ЗАПИСАТИСЬ</button>
+          </div>
         </div>
       </div>
       <div class="backdrop backdrop--is-hidden" data-modal>
         <div class="backdrop__box">
           <img src="./images/381599_error_icon.svg" alt="error" class="img__error" />
           <p class="error__text"></p>
-          <button type="button" class="backdrop__button--close" data-modal-close>Закрыть</button>
+          <button type="button" class="backdrop__button--close" data-modal-close>Закрити</button>
+        </div>
+      </div>
+      <div class="backdrop__done backdrop--is-hidden__done" data-modal-done>
+        <div class="backdrop__box-done">
+          <img
+            src="./images/kisspng-computer-icons-download-5b37f5fa1bde49.0185503915303941061142.png"
+            alt="done"
+            class="img__done"
+          />
+          <p class="done__text"></p>
+          <button type="button" class="backdrop__button--close" data-done-close>Закрити</button>
         </div>
       </div>
     </div>

@@ -10,18 +10,18 @@ const renderCalendar = () => {
   const nextDays = 7 - lastDayIndex - 1;
 
   const months = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
+    'Січень',
+    'Лютий',
+    'Березень',
+    'Квітень',
+    'Травень',
+    'Червень',
+    'Липень',
+    'Серпень',
+    'Вересень',
+    'Жовтень',
+    'Листопад',
+    'Грудень',
   ];
 
   document.querySelector('.date h1').innerHTML = months[date.getMonth()];
@@ -30,18 +30,18 @@ const renderCalendar = () => {
   let days = '';
 
   for (let x = firstDayIndex; x > 0; x -= 1) {
-    days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+    days += `<div class="prev-date day">${prevLastDay - x + 1}</div>`;
   }
   for (let i = 1; i <= lastDay; i += 1) {
     if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div class="today day">${i}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div class="day"'>${i}</div>`;
     }
   }
 
   for (let j = 1; j <= nextDays; j += 1) {
-    days += `<div class="next-date">${j}</div>`;
+    days += `<div class="next-date day">${j}</div>`;
   }
   monthDays.innerHTML = days;
 };
